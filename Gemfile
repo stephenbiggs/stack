@@ -65,6 +65,9 @@ gem "simple_form"
 gem "activeadmin", github: "gregbell/active_admin"
 
 
+# gems for scraping reddit
+gem 'httparty'
+gem 'nokogiri'
 
 
 
