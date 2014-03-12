@@ -1,0 +1,31 @@
+<h1>Stack</h1>
+
+<p>This is my homepage</p>
+
+The user currently logged in is <%= @username %>
+
+
+<h2>There are <%= @stories.size %> stories</h2>
+
+
+
+<% @stories.each do |story| %>
+
+	<div class="story">
+		<h3><%= link_to story.title, story.link %></h3>
+		<p><%= story.description %></p>
+		<p>Posted <%= time_ago_in_words story.created_at %> ago</p>
+		<p>
+			<%= link_to pluralize(story.comments.size, "comment"), 
+									story_path(story) %>
+
+			<%= pluralize(story.votes.size, "vote") %>
+		</p>
+
+	</div>
+
+<% end %>
+
+<p>
+	<%= link_to "Add a story", new_story_path %>
+</p>

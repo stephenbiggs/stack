@@ -1,0 +1,42 @@
+<h1><%= @story.title %></h1>
+
+<p>
+	<%= link_to "Edit", edit_story_path(@story), class: "edit" %>
+	<%= link_to "Delete", 
+							story_path(@story), 
+							method: :delete, 
+							confirm: "Are you sure" %>
+</p>
+
+
+<h3>
+	<%= pluralize @story.votes.size, "vote" %>
+</h3>
+
+<p>
+	<%= link_to "Upvote",
+							story_votes_path(@story),
+							method: :post %>
+</p>
+
+
+<h3>
+	<%= pluralize @story.comments.size, "comment" %>
+</h3>
+
+<% @story.comments.each do |comment| %>
+
+	<div class="comment">
+		<%= comment.body %>
+
+		<p>
+			<%= time_ago_in_words comment.created_at %> ago
+		</p>
+	</div>
+
+<% end %>
+
+<p>
+	<%= link_to "Add a comment", new_story_comment_path(@story) %>
+</p>
+
